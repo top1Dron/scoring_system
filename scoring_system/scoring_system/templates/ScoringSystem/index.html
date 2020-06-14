@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}Кредитний скоринг онлайн{% endblock title%}</title>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        {% block extra_head %}
+            {% comment %} <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'> {% endcomment %}
+            {% comment %} <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> {% endcomment %}
+            <link rel='stylesheet' type="text/css" href={% static 'css/main_page.css' %}>
+            
+        {% endblock extra_head %}
+    </head>
+    <body>
+        {% block main_content %}
+        <div class='article'>
+            <div class="header">
+                <h2>Кредитний скоринг онлайн</h2>
+            </div>
+            <div class="information">
+                <p class="paragraph">Перш, ніж прийняти рішення про схвалення кредиту, всі банки оцінюють ризик неповернення коштів. 
+                Такий аналіз можна провести громадянам самостійно. Для цього розроблена спеціальна модель, яка отримала назву кредитний скоринг онлайн. 
+                На підставі цієї оцінки фінансові організації отримують інформацію про платоспроможність клієнтів, а позичальники можуть дізнатися кредитний рейтинг безкоштовно.</p>
+            </div>
+            <div class="main">
+                <span id="id_explain">
+                    <p>На даній сторінці можна безкоштовно порахувати скоринговий бал. Калькулятор оцінить вашу ймовірність отримання кредиту залежно від вибраної вами суми кредиту</p>
+                </span>
+                <span id='form_number' data-form-url="{% url 'ajax_start_quiz' form_number %}"></span>
+                <span id="quiz_form">
+                    <form id='submit_form' data-form-url="">
+                        <button id='next_question' type="submit" style="display: none;">Далі</button>
+                    </form>
+                    <form id='submit_user_form' data-form-url=""></form>
+                </span>
+            <button id='start_test' type="submit">Почати тест</button>
+            </div>
+        </div>
+        {% endblock main_content %}
+        {% block javascript %}
+            <script src={% static 'js/front.js' %}></script>
+        {% endblock javascript %}
+    </body>
+</html>

@@ -1,0 +1,25 @@
+{% load widget_tweaks %}
+{% load static %}
+
+{% block extra_head %}<link href={% static 'css/question_form.css' %} rel="stylesheet" type="text/css" />{% endblock extra_head %}
+
+
+<div class="container">
+    <form id='submit_form' data-form-url="{% url 'ajax_start_quiz' form_number %}">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <span id='error' style="display: none;"><er>Будь ласка, виберіть хоча б один варіант</er></span>
+        <h3>{{ form.answer.label_tag }}</h3>
+        
+        {% for answer in form.answer %}
+                <label class="container_label" for="{{ answer.id_for_label }}">
+                    {{ answer.tag }} {{ answer.errors }} {{ answer.choice_label }}
+                    <span class="checkmark"></span>
+                </label>
+                {% if answer.errors %}<ul class="errorlist"><li>{{ answer.errors }}</li></ul>{% endif %}
+        {% endfor %}
+        
+        {% comment %} {{ form.as_p }} {% endcomment %}
+        <button id='next_question' type="submit">Далі</button>
+    </form>
+</div>

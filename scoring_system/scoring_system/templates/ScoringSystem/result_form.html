@@ -1,0 +1,15 @@
+{% load static %}
+
+{% block extra_head %}<link href={% static 'css/result_form.css' %} rel="stylesheet" type="text/css" />{% endblock extra_head %}
+
+<form action="" method='post'>
+    {% csrf_token %}
+    <h3>Ви пройшли тест!</h3>
+    {% if total_points >= loan_amount_points %}
+        <p class='paragraph'>Вітаємо! Ви набрали {{ total_points }} з необхідних {{ loan_amount_points }} на вибрану суму кредиту. У вас достатній показник, щоб вам оформили кредит практично у будь-якій організації під низький відсоток.</p>
+    {% else %}
+        <p class='paragraph'>Ви набрали {{ total_points }} з необхідних {{ loan_amount_points }} на вибрану суму кредиту. Ваш показник занадто низький, щоб отримати кредит на таку суму. Вам потрібно або зменшити бажану суму, або підвищити свій рейтинг.</p>
+    {% endif %}
+    
+    <button id='refresh_button' type="submit">Почати спочатку</button>
+</form>

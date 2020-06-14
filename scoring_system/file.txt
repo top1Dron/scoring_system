@@ -1,0 +1,10 @@
+vik 2 0.3
+stat 2 0.0
+family_stan 3 0.1
+Sfera_roboti 2 0.9
+Diti 1 0.4
+Osvita 2 0.5
+Posada 2 0.8
+Dohid 2 1.35
+total: 4.35
+Bajana_suma_creditu 1 4.5 4.5

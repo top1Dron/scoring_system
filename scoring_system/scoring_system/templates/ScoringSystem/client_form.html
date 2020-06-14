@@ -1,0 +1,39 @@
+{% load widget_tweaks %}
+{% load static %}
+
+{% block extra_head %}<link href={% static 'css/client_form.css' %} rel="stylesheet" type="text/css" />{% endblock extra_head %}
+
+<div class="container">
+    <form id='submit_user_form' data-form-url="{% url 'ajax_start_quiz' form_number %}">
+        <h3>Введіть ваші дані:</h3>
+        {{ form.non_field_errors }}
+        
+        <fieldset>
+            {{ form.Surname_cl.errors }}
+            {% render_field form.Surname_cl placeholder="Ваше прізвище" autofocus="on" %}</br>
+        </fieldset>
+
+        <fieldset>
+            {{ form.Name_cl.errors }}
+            {% render_field form.Name_cl placeholder="Ваше ім`я" %}
+        </fieldset>
+        
+        <fieldset>
+            {{ form.Po_batk_cl.errors }}
+            {% render_field form.Po_batk_cl placeholder="Ваше по-батькові" %}
+        </fieldset>
+
+        <fieldset>
+            {{ form.Seria_passport.errors }}
+            {% render_field form.Seria_passport placeholder="Ваша серія паспорту" %}
+        </fieldset>
+
+        <fieldset>
+            {{ form.Nomer_passport.errors }}
+            {% render_field form.Nomer_passport placeholder="Ваш номер паспорту" %}
+        </fieldset>
+        {% comment %} {{ form.as_p }} {% endcomment %}
+        <button id='next_question' type="submit">Далі</button>
+        {% csrf_token %}
+    </form>
+</div>
