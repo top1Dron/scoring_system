@@ -13,6 +13,11 @@ class Client(models.Model):
         return f'{self.Surname_cl} {self.Name_cl} {self.Po_batk_cl}'
 
 
+    class Meta:
+        verbose_name = 'Клієнт'
+        verbose_name_plural = 'Клієнти'
+
+
 class Osvita(models.Model):
 
     Bal_osviti = models.FloatField()
@@ -22,6 +27,11 @@ class Osvita(models.Model):
         return self.Name_osviti
 
 
+    class Meta:
+        verbose_name = 'Освітній рівень'
+        verbose_name_plural = 'Освітні рівні'
+
+
 class Vik(models.Model):
     
     Bal_viku = models.FloatField()
@@ -29,17 +39,22 @@ class Vik(models.Model):
 
     def __str__(self):
         if self.Vik == 18:
-            return f'до {self.Vik}'
+            return f'{self.Vik} - 23'
         elif self.Vik == 23:
-            return f'18 - {self.Vik}'
+            return f'{self.Vik} - 27'
         elif self.Vik == 27:
-            return f'23 - 27'
-        elif self.Vik == 36:
             return f'27 - 36'
-        elif self.Vik == 46:
+        elif self.Vik == 36:
             return f'36 - 46'
+        elif self.Vik == 46:
+            return f'46 - 60'
         else:
-            return f'46 - 60 або старіше' 
+            return f'60 або старіше'
+
+
+    class Meta:
+        verbose_name = 'Вік'
+        verbose_name_plural = 'Вікові категорії'
 
 
 class Posada (models.Model):
@@ -51,6 +66,11 @@ class Posada (models.Model):
         return self.Name_posadi
 
 
+    class Meta:
+        verbose_name = 'Посада'
+        verbose_name_plural = 'Посади'
+
+
 class Dohid(models.Model):
 
     Bal_dohodu = models.FloatField()
@@ -59,6 +79,11 @@ class Dohid(models.Model):
 
     def __str__(self):
         return f'{self.Range_dohodu}'
+
+    
+    class Meta:
+        verbose_name = 'Дохід'
+        verbose_name_plural = 'Доходи'
     
 
 class Diti(models.Model):
@@ -70,6 +95,11 @@ class Diti(models.Model):
         return f'{self.Kilkist_ditey}'
 
 
+    class Meta:
+        verbose_name = 'Кількість дітей'
+        verbose_name_plural = 'Кількість дітей'
+
+
 class Sfera_roboti(models.Model):
 
     Bal_sferi = models.FloatField()
@@ -77,6 +107,11 @@ class Sfera_roboti(models.Model):
 
     def __str__(self):
         return self.Name_Sferi
+
+
+    class Meta:
+        verbose_name = 'Сфера роботи'
+        verbose_name_plural = 'Сфери роботи'
 
 
 class Family_stan(models.Model):
@@ -88,6 +123,11 @@ class Family_stan(models.Model):
         return self.Name_stanu
 
 
+    class Meta:
+        verbose_name = 'Сімейне положення'
+        verbose_name_plural = 'Сімейне положення'
+
+
 class Stat(models.Model):
 
     Bal_stati = models.FloatField()
@@ -97,6 +137,11 @@ class Stat(models.Model):
         return self.Name_stati
 
 
+    class Meta:
+        verbose_name = 'Стать'
+        verbose_name_plural = 'Стать'
+
+
 class Bajana_suma_creditu(models.Model):
 
     Bal_sumi = models.FloatField()
@@ -104,6 +149,11 @@ class Bajana_suma_creditu(models.Model):
 
     def __str__(self):
         return self.Znachennya_creditu
+
+
+    class Meta:
+        verbose_name = 'Можлива сума кредиту'
+        verbose_name_plural = 'Можлива сума кредиту'
 
 
 class Anketa(models.Model):
@@ -158,3 +208,8 @@ class Anketa(models.Model):
         on_delete=models.CASCADE,
         related_name='ankets'
     )
+
+    
+    class Meta:
+        verbose_name = 'Анкета'
+        verbose_name_plural = 'Анкети'
