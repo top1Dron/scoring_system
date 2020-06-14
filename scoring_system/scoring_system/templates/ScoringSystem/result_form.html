@@ -7,9 +7,27 @@
     <h3>Ви пройшли тест!</h3>
     {% if total_points >= loan_amount_points %}
         <p class='paragraph'>Вітаємо! Ви набрали {{ total_points }} з необхідних {{ loan_amount_points }} на вибрану суму кредиту. У вас достатній показник, щоб вам оформили кредит практично у будь-якій організації під низький відсоток.</p>
+        <p>Прямо зараз вам можуть надати кредит такі банки чи організації:</p>
+        {% if loan_amount_points < 301 %}
+            <a class="bank-linker" href="https://qoo.gl/pHsUw" >E-Гроші</a>
+            <a class="bank-linker" href="https://qoo.gl/W3vBr">Moneyveo</a>
+            <a class="bank-linker" href="https://qoo.gl/WhOj2">FINHUB</a>
+        {% elif loan_amount_points < 351 %}
+            <a class="bank-linker" href="https://qoo.gl/d5UjY">БізнесПозика</a>
+            <a class="bank-linker" href="https://qoo.gl/yR7h4">АльфаБанк</a>
+            <a class="bank-linker" href="https://qoo.gl/704zJ">А-Банк</a>
+        {% elif loan_amount_points < 421 %}
+            <a class="bank-linker" href='https://qoo.gl/fhrc9'>ТАСКОМБАНК</a>
+            <a class="bank-linker" href="https://qoo.gl/w6LsE">Credit Agricole</a>
+            <a class="bank-linker" href="https://qoo.gl/41EIJ">БІЗбанк</a>
+        {% elif loan_amount_points < 551 %}
+            <a class="bank-linker" href="https://qoo.gl/7cCPI">Idea Bank</a>
+            <a class="bank-linker" href="https://qoo.gl/UbvPG">PROSTOBANK</a>
+            <a class="bank-linker" href="https://qoo.gl/hMu7o">Кредитний супермаркет</a>
+        {% endif %}
     {% else %}
         <p class='paragraph'>Ви набрали {{ total_points }} з необхідних {{ loan_amount_points }} на вибрану суму кредиту. Ваш показник занадто низький, щоб отримати кредит на таку суму. Вам потрібно або зменшити бажану суму, або підвищити свій рейтинг.</p>
     {% endif %}
-    
+    </br>
     <button id='refresh_button' type="submit">Почати спочатку</button>
 </form>
